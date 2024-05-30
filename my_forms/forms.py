@@ -1,6 +1,6 @@
 from django import forms
 
-from my_forms.models import Article, Comment
+from my_forms.models import Article
 
 
 class ArticleForm(forms.ModelForm):
@@ -25,7 +25,6 @@ class ArticleForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = super().clean()
-        # a good example to clean method
         title = cleaned_data.get('title')
         content = cleaned_data.get('content')
         if title and content and title not in content:
