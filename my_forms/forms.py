@@ -1,9 +1,11 @@
 from django import forms
+from django_recaptcha.fields import ReCaptchaField
 
 from my_forms.models import Article
 
 
 class ArticleForm(forms.ModelForm):
+    captcha = ReCaptchaField()
 
     class Meta:
         model = Article

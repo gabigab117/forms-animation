@@ -1,5 +1,3 @@
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.forms import modelformset_factory
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
@@ -58,7 +56,8 @@ def formset_view(request):
 
 
 def update_view(request, pk):
-    article = get_object_or_404(Article, pk=pk)
+    # article = get_object_or_404(Article, pk=pk)
+    article = Article.objects.get(pk=pk)
 
     if request.method == "POST":
         form = ArticleForm(request.POST, instance=article)
